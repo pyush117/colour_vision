@@ -305,13 +305,18 @@
   <!-- Custom script for this template -->
   <script src="assets/js/script.js"></script>
   <script>
-    const currentPage = window.location.pathname.split("/").pop(); // e.g., "services.html"
-    document.querySelectorAll('.header-style-2 #navbar > ul > li a').forEach(link => {
-      if (link.getAttribute('href') === currentPage) {
-        link.parentElement.classList.add('active'); // only this li gets active
-      }
-    });
-  </script>
+  // Get current path, default to "index" if empty
+  let currentPath = window.location.pathname.split("/").pop();
+  if (!currentPath) currentPath = "index";
+
+  document.querySelectorAll('.header-style-2 #navbar > ul > li a').forEach(link => {
+    let href = link.getAttribute('href').replace('.html',''); // remove .html for comparison
+    if (href === currentPath.replace('.html','')) {
+      link.parentElement.classList.add('active'); // set active class
+    }
+  });
+</script>
+
 
 </body>
 

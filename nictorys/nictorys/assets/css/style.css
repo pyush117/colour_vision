@@ -2455,6 +2455,7 @@ img {
         max-width: 80px;         /* adjust size for mobile */
         height: auto;             /* maintain aspect ratio */
     }
+   
 
     .site-header .navbar-header .navbar-brand img {
         max-width: 100%;          /* scale to container */
@@ -2463,6 +2464,7 @@ img {
         margin: 0 auto;           /* center image */
     }
 }
+
 
 
 @media (max-width: 991px) {
