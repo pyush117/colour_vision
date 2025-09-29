@@ -3921,6 +3921,44 @@ img {
   }
 }
 
+/* For medium screens and below (<= 1024px) */
+@media (max-width: 1024px) {
+  .contact-section .left-col {
+    display: none !important; /* hide image */
+  }
+
+  .contact-section .contact-form {
+    width: 100% !important;      /* full width */
+    float: none !important;      /* remove float */
+    margin: 0 !important;        /* reset margin */
+  }
+
+  /* Override Bootstrap col-md-6 flex/grid */
+  .contact-section .col-md-6.contact-form {
+    flex: 0 0 100% !important;
+    max-width: 100% !important;
+    position: relative;
+    left: 0;
+  }
+}
+
+
+/* Hide image and make form full width for medium screens and below */
+/* For screens 1024px and below */
+/* Show image for screens 1024px and above */
+/* Reset previous hiding */
+/* Show image and adjust sizes for 1024px and above */
+/* Remove any display:none for 1024px+ */
+
+
+
+
+
+
+
+
+
+
 /*--------------------------------------------------------------
 #1.1	cta-section
 --------------------------------------------------------------*/
@@ -5003,22 +5041,6 @@ img {
 /*--------------------------------------------------------------
 #1.8	contact-map-section
 --------------------------------------------------------------*/
-.contact-map-section .contact-map {
-  height: 550px;
-}
-
-.contact-map-section iframe {
-  width: 100%;
-  height: 100%;
-  border: 0;
-  outline: 0;
-  filter: gray;
-  /* IE6-9 */
-  -webkit-filter: grayscale(99%);
-  /* Chrome 19+ & Safari 6+ */
-  -webkit-backface-visibility: hidden;
-  /* Fix for transition flickering */
-}
 
 /*--------------------------------------------------------------
 	#home style 2
