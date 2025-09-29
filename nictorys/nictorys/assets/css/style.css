@@ -3317,6 +3317,32 @@ img {
 .site-footer .lower-footer .short-links ul a:hover {
   color: #ff5e14;
 }
+/* Upper Footer: Medium screens (tablet) */
+/* Medium screens: 3 columns per row */
+@media (min-width: 768px) and (max-width: 991px) {
+    .site-footer .upper-footer .row {
+        display: flex !important;
+        flex-wrap: wrap !important;
+        justify-content: flex-start !important;
+        gap: 20px;
+         
+    }
+
+    .site-footer .upper-footer .col {
+        width: calc(33.3333% - 20px) !important; 
+        float: none !important; 
+        margin-bottom: 30px !important;
+    }
+}
+
+
+
+
+
+
+
+
+
 
 .site-header .sticky-header {
   width: 100%;
@@ -5216,6 +5242,48 @@ img {
     float: left;
   }
 }
+/* Desktop & Tablet: Flex layout */
+.services-section-s2 .service-grids {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 0 -15px; /* spacing for gutter */
+}
+
+.services-section-s2 .service-grids .grid {
+  width: calc(33.33% - 30px); /* 3 per row on desktop */
+  margin: 0 15px 50px;
+  display: flex;
+  flex-direction: column; /* image above details */
+}
+
+/* Medium screens: 2 per row */
+@media (max-width: 991px) {
+  .services-section-s2 .service-grids .grid {
+    width: calc(50% - 30px);
+    margin: 0 15px 40px;
+  }
+}
+
+/* Small screens: 1 per row */
+@media (max-width: 767px) {
+  .services-section-s2 .service-grids {
+    margin: 0; /* remove negative margin */
+  }
+  .services-section-s2 .service-grids .grid {
+    width: 100%;
+    margin: 0 0 30px;
+  }
+}
+
+/* Extra small screens: maintain 1 per row */
+@media (max-width: 550px) {
+  .services-section-s2 .service-grids .grid {
+    width: 100%;
+    margin: 0 0 25px;
+  }
+}
+
+
 /*--------------------------------------------------------------
 #2.4	cta-section-s2
 --------------------------------------------------------------*/
