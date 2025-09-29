@@ -342,17 +342,26 @@ Our recommendations cover colours, finishes, and textures for a harmonious space
     <!-- Custom script for this template -->
     <script src="assets/js/script.js"></script>
   <script>
-  // Get current path, default to "index" if empty
-  let currentPath = window.location.pathname.split("/").pop();
-  if (!currentPath) currentPath = "index";
+  // Get the current path
+  let path = window.location.pathname;
 
+  // Remove trailing slash if exists
+  if (path.endsWith('/')) path = path.slice(0, -1);
+
+  // Get the last segment of the path, or 'index' for homepage
+  let currentPage = path.split("/").pop() || "index";
+
+  // Loop through menu links
   document.querySelectorAll('.header-style-2 #navbar > ul > li a').forEach(link => {
-    let href = link.getAttribute('href').replace('.html',''); // remove .html for comparison
-    if (href === currentPath.replace('.html','')) {
-      link.parentElement.classList.add('active'); // set active class
+    // Remove .html from href for comparison
+    let linkPage = link.getAttribute('href').replace('.html', '').replace(/^\/+/, '');
+
+    if (linkPage === currentPage) {
+      link.parentElement.classList.add('active');
     }
   });
 </script>
+
 
 
   </body>
