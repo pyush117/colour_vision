@@ -160,7 +160,7 @@ a:hover {
 }
 
 .section-padding {
-  padding: 110px 0;
+  padding: 70px 0;
 }
 
 @media (max-width: 991px) {
@@ -1459,6 +1459,21 @@ img {
 /*--------------------------------------------------------------
 #0.3	header
 --------------------------------------------------------------*/
+.wa-fab {
+  display: inline-flex;
+  align-items:center;
+  justify-content:center;
+  width:40px;
+  height:40px;
+  border-radius:50%;
+  background:#25D366;    /* WhatsApp green */
+  box-shadow: 0 6px 18px rgba(0,0,0,0.15);
+  text-decoration:none;
+}
+.wa-fab .fa-whatsapp {
+  color: #fff;           /* white phone */
+  font-size: 24px;
+}
 .site-header {
   /* navigation open and close btn hide for width screen */
   /* style for navigation less than 992px */
@@ -2115,13 +2130,29 @@ img {
     padding-top: 0;
     margin: 0;
     position: relative;
-    top: 2px;
+    
   }
 }
 
 .header-style-1 .navbar-brand img, .header-style-2 .navbar-brand img {
-  max-width: 170px;
+  max-width: 80px;
 }
+/* Fix navbar-brand box issue when screen is narrow */
+@media (max-width: 991px) {
+  .header-style-2 .navbar-header .navbar-brand {
+    padding: 5px 0 !important;   /* reduce padding */
+    margin: 0 !important;
+    height: auto;                /* prevent oversized box */
+    display: flex;
+    align-items: center;         /* vertically center logo */
+  }
+
+  .header-style-2 .navbar-header .navbar-brand img {
+    max-width: 70px;   /* slightly smaller on narrow screens */
+    height: auto;
+  }
+}
+
 
 @media screen and (min-width: 992px) {
   .header-style-1 #navbar, .header-style-2 #navbar {
@@ -2315,6 +2346,56 @@ img {
   }
 }
 
+/* video section */
+
+ .video-holder-about {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.video-wrapper-about {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  padding-top: 120%; 
+  overflow: hidden;
+  border-radius: 10px; 
+}
+
+.video-wrapper-about iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+} 
+
+
+
+
+
+
+.mute-btn-about {
+  position: absolute;
+  bottom: 15px;
+  right: 15px;
+  background: rgba(0,0,0,0.6);
+  color: #fff;
+  border: none;
+  border-radius: 50%;
+  width: 45px;
+  height: 45px;
+  font-size: 18px;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.mute-btn-about:hover {
+  background: rgba(0,0,0,0.8);
+}
+
+
 
 /*--------------------------------------------
 	#header-style-2
@@ -2362,7 +2443,186 @@ img {
     border: none;     /* remove any border */
     box-shadow: none; /* remove any shadow */
 }
+
 }
+@media (max-width: 767px) {
+    .site-header .navbar-header .navbar-brand {
+        display: block;           /* ensure logo stays in its own row */
+        margin: 10px;
+        margin-top: 0px;
+        margin-bottom: 15px;        /* center horizontally */
+        padding: 0;               /* remove extra padding */
+        max-width: 80px;         /* adjust size for mobile */
+        height: auto;             /* maintain aspect ratio */
+    }
+
+    .site-header .navbar-header .navbar-brand img {
+        max-width: 100%;          /* scale to container */
+        height: auto;             /* maintain aspect ratio */
+        display: block;
+        margin: 0 auto;           /* center image */
+    }
+}
+
+
+@media (max-width: 991px) {
+  /* Ensure sidebar (#navbar) is fixed and scrollable */
+  .site-header #navbar {
+    position: fixed !important;
+    top: 0;
+    right: -330px; /* hidden by default */
+    width: 280px !important;
+    height: 100% !important;
+    background: #fff !important;
+    z-index: 9999 !important; /* above overlay */
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+    display: block !important; /* cancel flex from desktop */
+  }
+
+    .body-overlay:before {
+    display: none;
+ 
+  }
+  .body-overlay.active:before {
+    display: block;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.5);
+    z-index: 998; /* below sidebar */
+  }  
+
+  /* UL inside sidebar stacked vertically */
+  .site-header #navbar > ul {
+    display: block !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    list-style: none !important;
+  }
+
+  /* Each menu item full-width block */
+  .site-header #navbar > ul > li,
+  .site-header #navbar > ul > a.wa-fab { /* target WhatsApp anchor inside UL */
+    display: block !important;
+    width: 100% !important;
+    margin: 0 !important;
+    border-bottom: 1px solid #eee;
+  }
+
+  /* Style anchors like menu items */
+  .site-header #navbar > ul > li > a,
+  .site-header #navbar > ul > a.wa-fab {
+    display: block !important;
+    width: 100% !important;
+    padding: 14px 20px !important;
+    color: #000 !important;
+    text-decoration: none !important;
+    font-weight: 500 !important;
+    box-sizing: border-box !important;
+    background: transparent !important;
+    font-size: 16px;
+  }
+
+  /* Cancel any leftover flex/float from desktop */
+  .site-header #navbar ul,
+  .site-header #navbar .navbar-nav {
+    display: block !important;
+    justify-content: initial !important;
+    gap: 0 !important;
+    float: none !important;
+  }
+
+  /* Ensure close button stays visible */
+  .site-header #navbar .close-navbar {
+    left: -41px !important;
+    top: 20px !important;
+    position: absolute !important;
+  }
+
+  /* Remove any WhatsApp icon stretching */
+  .site-header #navbar > ul > a.wa-fab i {
+    font-size: 20px !important;
+    color: #25D366 !important;
+    display: inline-block !important;
+    vertical-align: middle !important;
+  }
+
+  /* Optional: Align text/icons vertically center */
+  .site-header #navbar > ul > a.wa-fab {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: flex-start !important;
+  }
+}
+@media (max-width: 991px) {
+  /* Reset WhatsApp button styles in sidebar */
+  .site-header #navbar > ul > a.wa-fab {
+    width: 100% !important;         /* full-width like other menu items */
+    height: auto !important;        /* remove fixed height */
+    border-radius: 0 !important;    /* remove circle */
+    box-shadow: none !important;    /* remove desktop shadow */
+    background: transparent !important; /* remove green background */
+    display: block !important;      /* stack like nav items */
+    padding: 14px 20px !important;  /* same padding as nav links */
+    font-size: 16px !important;     /* same font as nav */
+  }
+
+  /* Icon inside WhatsApp anchor */
+  .site-header #navbar > ul > a.wa-fab i {
+    font-size: 20px !important;
+    color: #25D366 !important;      /* WhatsApp green */
+    display: inline-block !important;
+    vertical-align: middle !important;
+    margin-right: 10px;             /* spacing from text */
+  }
+     .site-header #navbar {
+    z-index: 10001 !important;
+  }
+
+/* Ensure X button is visible and clickable on small screens */
+
+
+}
+
+@media (max-width: 991px) {
+  /* Make X button visible above everything */
+  .site-header #navbar .close-navbar {
+    display: flex !important;           /* ensure it shows */
+    position: fixed !important;         /* fixed to viewport */
+    top: 15px !important;               /* small offset from top */
+    right: 15px !important;             /* small offset from right */
+    width: 40px !important;
+    height: 40px !important;
+    background: #ff5e14 !important;
+    color: #fff !important;
+    border-radius: 50% !important;
+    align-items: center;
+    justify-content: center;
+    z-index: 10050 !important;          /* above sidebar & overlay */
+    cursor: pointer !important;
+  }
+
+  .site-header #navbar .close-navbar i {
+    font-size: 20px !important;
+    color: #fff !important;
+  }
+
+  
+}
+
+
+
+
+
+
+  
+  
+
+
+
 
 
 /*--------------------------------------------------------------
@@ -2536,7 +2796,7 @@ img {
 .hero-slider .slide-title h2 {
   font-size: 80px;
   font-size: 5.33333rem;
-  color: #fff;
+  color:lemonchiffon;
   margin: 0.57em 0;
 }
 
@@ -2572,7 +2832,7 @@ img {
 .hero-slider .slide-text p {
   font-size: 18px;
   font-size: 1.2rem;
-  color: #fff;
+  color: white;
   margin: 0 0 2em;
 }
 
@@ -2685,6 +2945,17 @@ img {
 .hero-style-3 .slide-btns {
   margin: 0 auto;
   text-align: center;
+}
+@media (max-width: 767px) {
+  .hero-slider .slide-btns > a:first-child {
+    margin-right: 25px; /* increase gap */
+    display: inline-block;
+    margin-bottom: 10px; /* optional: adds vertical spacing if they wrap */
+  }
+
+  .hero-slider .slide-btns a {
+    width: auto; /* prevent buttons from shrinking */
+  }
 }
 
 /*--------------------------------------------------------------
@@ -3437,16 +3708,10 @@ img {
   transition: all 0.3s;
 }
 
-.services-section .service-grids .read-more:hover {
-  text-decoration: underline;
-}
 
-@media (max-width: 767px) {
-  .services-section .service-grids .read-more {
-    font-size: 12px;
-    font-size: 0.8rem;
-  }
-}
+
+
+
 
 /*--------------------------------------------------------------
 #1.0	contact-section
@@ -3929,6 +4194,107 @@ img {
   transition-delay: 0.3s;
 }
 
+
+/* ===== LATEST PROJECTS SECTION (3x2 GRID) ===== */
+/* PROJECT GRID */
+/* NEW PROJECTS GRID STYLING */
+/* Container for all projects */
+.my-projects-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px; /* spacing between grids */
+  justify-content: center;
+}
+
+/* Individual project grid */
+.my-project-grid {
+  flex: 1 1 calc(33.33% - 20px); /* 3 per row on desktop */
+  max-width: 360px; /* slightly wider */
+  position: relative;
+  overflow: hidden;
+  margin-bottom: 20px;
+}
+
+/* Project inner wrapper */
+.my-project-inner {
+  position: relative;
+  overflow: hidden;
+}
+
+/* Image holder */
+.my-img-holder {
+  width: 100%;
+  height: 550px; /* decreased height */
+  overflow: hidden;
+}
+
+.my-img-holder img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+/* Hover effect */
+.my-project-grid:hover img {
+  transform: scale(1.05);
+}
+
+.my-details {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(128, 128, 128, 0.4); /* subtle gray overlay */
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.my-project-grid:hover .my-details {
+  opacity: 1;
+}
+
+.my-info {
+  position: absolute;
+  bottom: 20px;
+  left: 20px;
+  color: #fff;
+}
+
+.my-info h3 {
+  font-size: 18px;
+  margin: 0 0 5px 0;
+}
+
+.my-info .my-cat {
+  font-size: 14px;
+  color: #ff5e14;
+}
+
+/* Responsive adjustments */
+@media (max-width: 991px) {
+  .my-project-grid {
+    flex: 1 1 calc(50% - 20px); /* 2 per row */
+    max-width: 45%;
+  }
+  .my-img-holder {
+    height: 450px;
+  }
+}
+
+@media (max-width: 767px) {
+  .my-project-grid {
+    flex: 1 1 100%; /* 1 per row */
+    max-width: 100%;
+  }
+  .my-img-holder {
+    height: 350px;
+  }
+}
+
+
+
 /*--------------------------------------------------------------
 #1.3	why-choose-us-section
 --------------------------------------------------------------*/
@@ -4302,6 +4668,49 @@ img {
   margin: 0 auto;
   display: inline-block;
 }
+
+
+.partners-grid {
+  display: flex;
+  justify-content: space-between;  /* space between items */
+  align-items: center;             /* vertical alignment */
+  flex-wrap: wrap;                 /* wrap on small screens */
+  gap: 20px;                       /* spacing between items */
+}
+
+.partners-grid .grid {
+  flex: 1 1 calc(20% - 16px);     /* 5 items per row */
+  text-align: center;
+}
+
+.partners-grid .grid img {
+  max-width: 100%;                 /* responsive image */
+  height: auto;
+  display: inline-block;
+   max-height: 120px; 
+}
+
+/* Tablets / medium screens */
+@media (max-width: 991px) {
+  .partners-grid .grid {
+    flex: 1 1 calc(33.33% - 16px); /* 3 items per row */
+  }
+}
+
+/* Small mobiles */
+@media (max-width: 767px) {
+  .partners-grid .grid {
+    flex: 1 1 calc(50% - 16px);   /* 2 items per row */
+  }
+}
+
+/* Extra small mobiles */
+@media (max-width: 480px) {
+  .partners-grid .grid {
+    flex: 1 1 100%;               /* 1 item per row */
+  }
+}
+
 
 /*--------------------------------------------------------------
 #1.6	testimonials-section
@@ -4799,7 +5208,30 @@ img {
 .services-section-s2 .service-grids p, .services-section-s3 .service-grids p {
   margin: 0;
 }
+/* Heading color */
+.services-section-s2 .service-grids h3,
+.services-section-s2 .service-grids h3 a,
+.services-section-s3 .service-grids h3,
+.services-section-s3 .service-grids h3 a {
+    color: #151222;  /* black text for headings */
+    transition: color 0.3s;
+}
 
+/* Hover effect */
+.services-section-s2 .service-grids .grid:hover h3,
+.services-section-s2 .service-grids .grid:hover h3 a,
+.services-section-s3 .service-grids .grid:hover h3,
+.services-section-s3 .service-grids .grid:hover h3 a {
+    color: #ff5e14; /* orange on hover */
+}
+@media (min-width: 768px) and (max-width: 991px) {
+  .services-section-s2 .service-grids .grid,
+  .services-section-s3 .service-grids .grid {
+    width: calc(50% - 15px); /* 50% minus half of horizontal margin */
+    margin: 0 7.5px 50px;    /* adjust margins */
+    float: left;
+  }
+}
 /*--------------------------------------------------------------
 #2.4	cta-section-s2
 --------------------------------------------------------------*/
@@ -5217,6 +5649,7 @@ img {
 /*--------------------------------------------------------------
 #4.1	fun-fact-section
 --------------------------------------------------------------*/
+
 .fun-fact-section {
   background-color: #f7f9fa;
   padding: 100px;
@@ -5500,6 +5933,27 @@ img {
 
 .contact-pg-section .office-info ul > li + li {
   margin-top: 8px;
+}
+.whatsapp-link {
+  color: #fff;            /* makes text white */
+  text-decoration: none;  /* removes underline */
+}
+.whatsapp-link:hover {
+  color: #25D366;         /* WhatsApp green on hover */
+}
+.contact-pg-section .row.align-center {
+  display: flex;
+  flex-wrap: wrap;       /* keeps responsive behavior */
+  align-items: center;   /* vertically centers both columns */
+}
+
+.contact-pg-section .office-info {
+  position: relative;    /* keep your existing background styling */
+  z-index: 1;
+  padding: 30px;         /* optional padding inside box */
+  background-color: rgba(255, 94, 20, 0.95); /* your overlay color */
+  color: #fff;           /* make text visible */
+  border-radius: 10px;   /* optional rounded corners */
 }
 
 /*--------------------------------------------------------------
